@@ -8,6 +8,11 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "nuxt": "^3.2.3"
+    "nuxt": "^3.2.3",
+    "sass": "^1.58.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "zod": "^3.21.4"
   }
 }
