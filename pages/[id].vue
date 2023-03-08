@@ -63,9 +63,11 @@
           disabled
         />
       </div>
-      <button type="submit" class="btn btn-primary" @click.prevent="checkout">
-        結帳
-      </button>
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary" @click.prevent="checkout">
+          結帳
+        </button>
+      </div>
     </form>
   </div>
 </template>
