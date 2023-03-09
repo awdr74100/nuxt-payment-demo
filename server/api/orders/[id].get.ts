@@ -30,7 +30,7 @@ export default defineEventHandler(async (event) => {
       ItemDesc: order.title,
       Email: order.email,
       EmailModify: 0,
-      // ReturnURL: `${getURL(event.node.req)}/orders`,
+      ReturnURL: `${getURL(event.node.req)}/api/newebpay/return`,
       NotifyURL: `${getURL(event.node.req)}/api/newebpay/notify`,
     });
 

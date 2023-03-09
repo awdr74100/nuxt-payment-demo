@@ -11,6 +11,8 @@ export default defineEventHandler(async (event) => {
 
     const { Status, TradeInfo } = await bodySchema.parseAsync(body);
 
+    console.log(await readBody(event));
+
     if (Status !== 'SUCCESS') throw new Error();
 
     const JSONData: { Result: { MerchantOrderNo: string } } = JSON.parse(
