@@ -4,7 +4,8 @@ export default defineEventHandler(async (event) => {
     console.log(await readBody(event));
     console.log(getQuery(event));
 
-    return { success: true };
+    return sendNoContent(event);
+    // return { success: true };
   } catch (error) {
     return { success: false };
   }
