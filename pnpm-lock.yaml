@@ -6,6 +6,7 @@ specifiers:
   crypto-js: ^4.1.1
   crypto-random-string: ^5.0.0
   nuxt: ^3.2.3
+  requrl: ^3.0.2
   sass: ^1.58.3
   zod: ^3.21.4
 
@@ -13,6 +14,7 @@ dependencies:
   bootstrap: 5.2.3
   crypto-js: 4.1.1
   crypto-random-string: 5.0.0
+  requrl: 3.0.2
   zod: 3.21.4
 
 devDependencies:
@@ -4538,6 +4540,10 @@ packages:
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
     dev: true
+
+  /requrl/3.0.2:
+    resolution: {integrity: sha512-f3gjR6d8MhOpn46PP+DSJywbmxi95fxQm3coXBFwognjFLla9X6tr8BdNyaIKNOEkaRbRcm0/zYAqN19N1oyhg==}
+    dev: false
 
   /resolve-from/5.0.0:
     resolution: {integrity: sha512-qYg9KP24dD5qka9J47d0aVky0N+b4fTU89LN9iDnjB5waksiC49rvMB0PrUJQGoTmH50XPiqOvAjDfaijGxYZw==}

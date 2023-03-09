@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { stringify } from 'node:querystring';
 import { createCipheriv, createHash } from 'node:crypto';
+import getURL from 'requrl';
 
 export default defineEventHandler(async (event) => {
   try {
@@ -35,6 +36,9 @@ export default defineEventHandler(async (event) => {
       Amt: order.amount,
       ItemDesc: order.title,
       Email: order.email,
+      EmailModify: 0,
+      // ReturnURL: `${getURL(event.node.req)}/orders`,
+      NotifyURL: `${getURL(event.node.req)}/newebpay/notify`,
     });
 
     const TradeInfo = cipher.update(qs, 'utf-8', 'hex') + cipher.final('hex');
@@ -61,7 +65,7 @@ export default defineEventHandler(async (event) => {
     return {
       success: true,
       order,
-      payment: {
+      mpg: {
         MerchantID: config.NEWEBPAY_MERCHANT_ID,
         TradeInfo,
         TradeSha,

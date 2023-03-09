@@ -63,10 +63,12 @@
           disabled
         />
       </div>
-      <input type="hidden" name="MerchantID" :value="data.payment.MerchantID" />
-      <input type="hidden" name="TradeInfo" :value="data.payment.TradeInfo" />
-      <input type="hidden" name="TradeSha" :value="data.payment.TradeSha" />
-      <input type="hidden" name="Version" :value="data.payment.Version" />
+      <div>
+        <input type="hidden" name="MerchantID" :value="data.mpg.MerchantID" />
+        <input type="hidden" name="TradeInfo" :value="data.mpg.TradeInfo" />
+        <input type="hidden" name="TradeSha" :value="data.mpg.TradeSha" />
+        <input type="hidden" name="Version" :value="data.mpg.Version" />
+      </div>
       <div class="text-end">
         <button type="submit" class="btn btn-primary">結帳</button>
       </div>
@@ -78,6 +80,6 @@
 const route = useRoute();
 
 const { data } = await useFetch(`/api/orders/${route.params.id}`, {
-  pick: ['order', 'payment'],
+  pick: ['order', 'mpg'],
 });
 </script>
