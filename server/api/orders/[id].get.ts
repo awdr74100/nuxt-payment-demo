@@ -21,12 +21,6 @@ export default defineEventHandler(async (event) => {
 
     const config = useRuntimeConfig();
 
-    const cipher = createCipheriv(
-      'aes-256-cbc',
-      config.NEWEBPAY_HASH_KEY,
-      config.NEWEBPAY_HASH_IV,
-    );
-
     const qs = stringify({
       MerchantID: config.NEWEBPAY_MERCHANT_ID,
       RespondType: 'JSON',
@@ -41,26 +35,10 @@ export default defineEventHandler(async (event) => {
       NotifyURL: `${getURL(event.node.req)}/api/newebpay/notify`,
     });
 
-    const TradeInfo = cipher.update(qs, 'utf-8', 'hex') + cipher.final('hex');
-
-    const TradeSha = createHash('sha256')
-      .update(
-        `HashKey=${config.NEWEBPAY_HASH_KEY}&${TradeInfo}&HashIV=${config.NEWEBPAY_HASH_IV}`,
-      )
-      .digest('hex')
-      .toUpperCase();
-
-    /**
-     * Use crypto-js package
-     */
-    // const crypto = useCrypto();
-
-    // const TradeInfo = crypto.aesEncrypt(query);
-    // const TradeSha = crypto
-    //   .shaEncrypt(
-    //     `HashKey=${config.NEWEBPAY_HASH_KEY}&${TradeInfo}&HashIV=${config.NEWEBPAY_HASH_IV}`,
-    //   )
-    //   .toUpperCase();
+    const TradeInfo = aesEncrypt(qs);
+    const TradeSha = shaEncrypt(
+      `HashKey=${config.NEWEBPAY_HASH_KEY}&${TradeInfo}&HashIV=${config.NEWEBPAY_HASH_IV}`,
+    ).toUpperCase();
 
     return {
       success: true,
@@ -76,3 +54,15 @@ export default defineEventHandler(async (event) => {
     return { success: false };
   }
 });
+
+/**
+ * Use crypto-js package
+ */
+// const crypto = useCrypto();
+
+// const TradeInfo = crypto.aesEncrypt(query);
+// const TradeSha = crypto
+//   .shaEncrypt(
+//     `HashKey=${config.NEWEBPAY_HASH_KEY}&${TradeInfo}&HashIV=${config.NEWEBPAY_HASH_IV}`,
+//   )
+//   .toUpperCase();

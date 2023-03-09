@@ -1,17 +1,37 @@
+import { z } from 'zod';
+import { createDecipheriv } from 'node:crypto';
+
 export default defineEventHandler(async (event) => {
   try {
     const body = await readBody(event);
 
-    console.log(typeof body);
-    console.log(body.Status);
-    console.log(body.MerchantID);
-    console.log(body.Version);
-    console.log(body.TradeInfo);
-    console.log(body.TradeSha);
+    const bodySchema = z.object({
+      Status: z.string(),
+      TradeInfo: z.string(),
+    });
+
+    const { Status, TradeInfo } = await bodySchema.parseAsync(body);
+
+    if (Status !== 'SUCCESS') throw new Error();
+
+    const { Result }: { Result: { MerchantOrderNo: string } } = JSON.parse(
+      aesDecrypt(TradeInfo),
+    );
+
+    console.log(Result.MerchantOrderNo);
+
+    const db = useDB();
+
+    const order = db.orders.find(({ id }) => id === Result.MerchantOrderNo);
+
+    if (!order) throw new Error();
+
+    order.paid = true;
+
+    console.log(order);
 
     return sendNoContent(event);
-    // return { success: true };
   } catch (error) {
-    return { success: false };
+    return sendNoContent(event);
   }
 });

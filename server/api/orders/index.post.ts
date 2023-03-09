@@ -22,6 +22,7 @@ export default defineEventHandler(async (event) => {
       amount,
       createdAt: Math.floor(Date.now() / 1000),
       updatedAt: Math.floor(Date.now() / 1000),
+      paid: false,
     };
 
     db.orders.push(order);

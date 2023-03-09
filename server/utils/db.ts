@@ -5,6 +5,7 @@ interface Order {
   amount: number;
   createdAt: number;
   updatedAt: number;
+  paid: boolean;
 }
 
 let _orders: Order[];
