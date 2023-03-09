@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     const db = useDB();
 
     const order = {
-      id: cryptoRandomString({ length: 20, type: 'alphanumeric' }),
+      id: cryptoRandomString({ length: 17, type: 'alphanumeric' }),
       email,
       title,
       amount,

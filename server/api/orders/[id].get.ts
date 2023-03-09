@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     const params = getRouterParams(event);
 
     const paramsSchema = z.object({
-      id: z.string().length(20),
+      id: z.string().length(17),
     });
 
     const { id } = await paramsSchema.parseAsync(params);
