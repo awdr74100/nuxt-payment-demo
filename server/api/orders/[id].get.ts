@@ -38,7 +38,7 @@ export default defineEventHandler(async (event) => {
       Email: order.email,
       EmailModify: 0,
       // ReturnURL: `${getURL(event.node.req)}/orders`,
-      NotifyURL: `${getURL(event.node.req)}/newebpay/notify`,
+      NotifyURL: `${getURL(event.node.req)}/api/newebpay/notify`,
     });
 
     const TradeInfo = cipher.update(qs, 'utf-8', 'hex') + cipher.final('hex');
