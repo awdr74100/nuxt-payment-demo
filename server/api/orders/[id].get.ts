@@ -61,10 +61,12 @@ export default defineEventHandler(async (event) => {
     return {
       success: true,
       order,
-      MerchantID: config.NEWEBPAY_MERCHANT_ID,
-      TradeInfo,
-      TradeSha,
-      Version: '2.0',
+      payment: {
+        MerchantID: config.NEWEBPAY_MERCHANT_ID,
+        TradeInfo,
+        TradeSha,
+        Version: '2.0',
+      },
     };
   } catch (error) {
     return { success: false };

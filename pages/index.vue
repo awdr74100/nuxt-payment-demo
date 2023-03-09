@@ -40,17 +40,11 @@ const amount = ref('');
 const router = useRouter();
 
 const createOrder = async () => {
-  const { orderId } = await $fetch('/api/orders', {
-    method: 'POST',
-    body: {
-      email: email.value,
-      title: title.value,
-      amount: amount.value,
-    },
-  });
+  const method = 'POST';
+  const body = { email: email.value, title: title.value, amount: amount.value };
 
-  if (orderId) {
-    router.push(`/${orderId}`);
-  }
+  const { order } = await $fetch('/api/orders', { method, body });
+
+  if (order?.id) router.push(`/${order.id}`);
 };
 </script>

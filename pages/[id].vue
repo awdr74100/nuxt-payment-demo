@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-center mt-4">確認訂單</h1>
 
-  <div class="w-50 mx-auto mt-4" v-if="!error && data?.success && data.order">
+  <div class="w-50 mx-auto mt-4" v-if="data?.order">
     <form action="https://ccore.newebpay.com/MPG/mpg_gateway" method="post">
       <div class="mb-3">
         <label for="id" class="form-label">編號</label>
@@ -63,10 +63,10 @@
           disabled
         />
       </div>
-      <input type="hidden" name="MerchantID" :value="data.MerchantID" />
-      <input type="hidden" name="TradeInfo" :value="data.TradeInfo" />
-      <input type="hidden" name="TradeSha" :value="data.TradeSha" />
-      <input type="hidden" name="Version" :value="data.Version" />
+      <input type="hidden" name="MerchantID" :value="data.payment.MerchantID" />
+      <input type="hidden" name="TradeInfo" :value="data.payment.TradeInfo" />
+      <input type="hidden" name="TradeSha" :value="data.payment.TradeSha" />
+      <input type="hidden" name="Version" :value="data.payment.Version" />
       <div class="text-end">
         <button type="submit" class="btn btn-primary">結帳</button>
       </div>
@@ -77,5 +77,7 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const { data, error } = await useFetch(`/api/orders/${route.params.id}`);
+const { data } = await useFetch(`/api/orders/${route.params.id}`, {
+  pick: ['order', 'payment'],
+});
 </script>

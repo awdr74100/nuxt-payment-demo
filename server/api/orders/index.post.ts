@@ -28,7 +28,7 @@ export default defineEventHandler(async (event) => {
 
     // return sendRedirect(event, 'https://awdr74100.github.io');
 
-    return { success: true, orderId: order.id };
+    return { success: true, order };
 
     // return sendRedirect(event, `/${order.id}`);
   } catch (error) {
