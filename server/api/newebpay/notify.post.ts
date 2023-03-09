@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { createDecipheriv } from 'node:crypto';
 
 export default defineEventHandler(async (event) => {
   try {
@@ -14,17 +13,23 @@ export default defineEventHandler(async (event) => {
 
     if (Status !== 'SUCCESS') throw new Error();
 
-    const { Result }: { Result: { MerchantOrderNo: string } } = JSON.parse(
+    const JSONData: { Result: { MerchantOrderNo: string } } = JSON.parse(
       aesDecrypt(TradeInfo),
     );
 
-    console.log(Result.MerchantOrderNo);
+    console.log(JSONData);
+
+    const { Result } = JSONData;
 
     const db = useDB();
+
+    console.log(db.orders);
 
     const order = db.orders.find(({ id }) => id === Result.MerchantOrderNo);
 
     if (!order) throw new Error();
+
+    console.log(order);
 
     order.paid = true;
 

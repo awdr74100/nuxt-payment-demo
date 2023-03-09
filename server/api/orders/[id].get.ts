@@ -1,6 +1,5 @@
 import { z } from 'zod';
 import { stringify } from 'node:querystring';
-import { createCipheriv, createHash } from 'node:crypto';
 import getURL from 'requrl';
 
 export default defineEventHandler(async (event) => {
