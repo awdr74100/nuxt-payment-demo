@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { randomBytes } from 'node:crypto';
+import cryptoRandomString from 'crypto-random-string';
 
 export default defineEventHandler(async (event) => {
   try {
@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
     const bodySchema = z.object({
       email: z.string().email(),
-      title: z.string().min(6),
+      title: z.string().min(1),
       amount: z.number().gt(0),
     });
 
@@ -16,7 +16,7 @@ export default defineEventHandler(async (event) => {
     const db = useDB();
 
     const order = {
-      id: randomBytes(16).toString('hex'),
+      id: cryptoRandomString({ length: 20, type: 'alphanumeric' }),
       email,
       title,
       amount,

@@ -19,15 +19,15 @@
           v-model="amount"
         />
       </div>
-     <div class="text-end">
-      <button
-        type="submit"
-        class="btn btn-primary"
-        @click.prevent="createOrder"
-      >
-        建立
-      </button>
-     </div>
+      <div class="text-end">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          @click.prevent="createOrder"
+        >
+          建立
+        </button>
+      </div>
     </form>
   </div>
 </template>

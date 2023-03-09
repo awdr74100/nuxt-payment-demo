@@ -2,7 +2,7 @@
   <h1 class="text-center mt-4">確認訂單</h1>
 
   <div class="w-50 mx-auto mt-4" v-if="!error && data?.success && data.order">
-    <form action="#" @submit.prevent="checkout">
+    <form action="https://ccore.newebpay.com/MPG/mpg_gateway" method="post">
       <div class="mb-3">
         <label for="id" class="form-label">編號</label>
         <input
@@ -63,10 +63,12 @@
           disabled
         />
       </div>
+      <input type="hidden" name="MerchantID" :value="data.MerchantID" />
+      <input type="hidden" name="TradeInfo" :value="data.TradeInfo" />
+      <input type="hidden" name="TradeSha" :value="data.TradeSha" />
+      <input type="hidden" name="Version" :value="data.Version" />
       <div class="text-end">
-        <button type="submit" class="btn btn-primary" @click.prevent="checkout">
-          結帳
-        </button>
+        <button type="submit" class="btn btn-primary">結帳</button>
       </div>
     </form>
   </div>
@@ -76,6 +78,4 @@
 const route = useRoute();
 
 const { data, error } = await useFetch(`/api/orders/${route.params.id}`);
-
-const checkout = () => {};
 </script>
