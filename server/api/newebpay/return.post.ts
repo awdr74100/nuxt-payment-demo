@@ -5,8 +5,10 @@ export default defineEventHandler(async (event) => {
     console.log('Return: ');
     console.log(body);
 
-    return sendNoContent(event);
+    // return sendNoContent(event);
+    return sendRedirect(event, `/result/${'success'}`);
   } catch (error) {
-    return sendNoContent(event);
+    return sendRedirect(event, `/result/${'fail'}`);
+    // return sendNoContent(event);
   }
 });
