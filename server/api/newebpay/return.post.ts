@@ -47,8 +47,8 @@ export default defineEventHandler(async (event) => {
       PayBankCode: JSONData.Result.PayBankCode,
     });
 
-    return sendRedirect(event, `/result/success?${qs}`);
+    return sendRedirect(event, `/result?${qs}`);
   } catch (error) {
-    return sendRedirect(event, `/result/fail`);
+    return sendRedirect(event, `/result?Status=FAIL`);
   }
 });
