@@ -4,7 +4,7 @@
   <div class="w-50 mx-auto mt-4" v-if="data?.order">
     <form action="https://ccore.newebpay.com/MPG/mpg_gateway" method="post">
       <div class="mb-3">
-        <label for="id" class="form-label">編號</label>
+        <label for="id" class="form-label">訂單編號</label>
         <input
           type="text"
           class="form-control"
@@ -14,7 +14,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="email" class="form-label">信箱</label>
+        <label for="email" class="form-label">買家信箱</label>
         <input
           type="email"
           class="form-control"
@@ -24,7 +24,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="title" class="form-label">標題</label>
+        <label for="title" class="form-label">訂單標題</label>
         <input
           type="text"
           class="form-control"
@@ -34,7 +34,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="amount" class="form-label">總額</label>
+        <label for="amount" class="form-label">訂單總額</label>
         <input
           type="number"
           class="form-control"

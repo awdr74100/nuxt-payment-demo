@@ -3,15 +3,15 @@
   <div class="w-50 mx-auto mt-4">
     <form action="#" @submit.prevent="createOrder">
       <div class="mb-3">
-        <label for="email" class="form-label">信箱</label>
+        <label for="email" class="form-label">買家信箱</label>
         <input type="email" class="form-control" id="email" v-model="email" />
       </div>
       <div class="mb-3">
-        <label for="title" class="form-label">標題</label>
+        <label for="title" class="form-label">訂單標題</label>
         <input type="text" class="form-control" id="title" v-model="title" />
       </div>
       <div class="mb-3">
-        <label for="amount" class="form-label">總額</label>
+        <label for="amount" class="form-label">訂單總額</label>
         <input
           type="number"
           class="form-control"

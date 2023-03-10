@@ -10,7 +10,7 @@
   <div class="w-50 mx-auto mt-4">
     <form action="#" v-if="route.query.Status === 'SUCCESS'">
       <div class="mb-3">
-        <label for="MerchantID">商店編號</label>
+        <label class="form-label" for="MerchantID">商店編號</label>
         <input
           type="text"
           class="form-control"
@@ -19,7 +19,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="Amt">訂單總額</label>
+        <label class="form-label" for="Amt">訂單總額</label>
         <input
           type="text"
           class="form-control"
@@ -28,7 +28,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="MerchantOrderNo">訂單編號</label>
+        <label class="form-label" for="MerchantOrderNo">訂單編號</label>
         <input
           type="text"
           class="form-control"
@@ -37,7 +37,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="EscrowBank">銀行縮寫</label>
+        <label class="form-label" for="EscrowBank">銀行名稱</label>
         <input
           type="text"
           class="form-control"
@@ -46,7 +46,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="ItemDesc">訂單標題</label>
+        <label class="form-label" for="ItemDesc">訂單標題</label>
         <input
           type="text"
           class="form-control"
@@ -55,7 +55,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="PaymentType">交易方式</label>
+        <label class="form-label" for="PaymentType">交易方式</label>
         <input
           type="text"
           class="form-control"
@@ -64,7 +64,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="PayTime">交易時間</label>
+        <label class="form-label" for="PayTime">交易時間</label>
         <input
           type="text"
           class="form-control"
@@ -73,7 +73,7 @@
         />
       </div>
       <div class="mb-3">
-        <label for="PayBankCode">銀行代號</label>
+        <label class="form-label" for="PayBankCode">銀行代號</label>
         <input
           type="text"
           class="form-control"
@@ -87,6 +87,4 @@
 
 <script setup lang="ts">
 const route = useRoute();
-
-console.log(route.query);
 </script>
