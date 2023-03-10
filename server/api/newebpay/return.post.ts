@@ -11,8 +11,11 @@ export default defineEventHandler(async (event) => {
 
     const { Status, TradeInfo } = await bodySchema.parseAsync(body);
 
-    console.log('Bang!!');
-    console.log(Status, TradeInfo);
+    if (Status !== 'SUCCESS') throw new Error();
+
+    console.log(TradeInfo);
+    console.log(aesDecrypt(TradeInfo));
+    console.log(JSON.parse(aesDecrypt(TradeInfo)));
 
     // return sendNoContent(event);
     return sendRedirect(event, `/result/${'success'}`);
